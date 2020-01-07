@@ -26,13 +26,38 @@
 
     - 등록 후 Virtual MFA Application에서 표시되는 6자리 번호를 차례대로 입력
 
-3. Hardware MFA 경우
+3. U2F security key 경우
+
+    ![U2F security key](media/u2f.png)
+
+    - U2F 보안키를 USB 포트에 연결
+
+    - U2F 보안키에 금색 부분을 터치
+
+4. 기타 Hardware MFA 경우
 
     ![Hardwaref MFA](media/hmfa.png)
 
-    - MFA (OTP) 다바이스 일련번호 입력
+    - MFA (OTP) 디바이스 일련번호 입력
 
     - 전원을 키고 나오는 6자리 숫자를 차례대로 입력
+
+5. Root 계정에 활성화된 MFA가 비활성화 될 경우 아래와 같은 안내메일이 Root 계정에 연결된 이메일 주소로 발송합니다.
+
+   ```text
+   Greetings from Amazon Web Services.
+
+   As per your request, the multi-factor authentication (MFA) has been deactivated for the AWS account associated with this email address.
+
+   If you did not initiate this action, you can view and update your MFA settings on the My Security Credentials page in the AWS Management Console
+
+   For additional help, visit the AWS Support Center at https://aws.amazon.com/support.
+
+   Thank you for using Amazon Web Services.
+
+   Sincerely,
+   The Amazon Web Services Team
+   ```
 
 ## Root 유저 로그인 Slack 알람 설정
 
