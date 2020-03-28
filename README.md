@@ -84,7 +84,7 @@
 
 ## Root 유저 로그인 Slack 알람 설정
 
-1. 접근 가능한 Slack Workspace 및 해당 Workspace에 대한 Admin 권한을 가지 계정이 필요.
+1. 접근 가능한 Slack Workspace 및 해당 Workspace에 대한 Admin 권한을 가진 계정이 필요.
 
 2. Slack workspace에 [Incoming webhook](https://my.slack.com/services/new/incoming-webhook) 설정 - 알람을 받은 채널을 지정하고 Webhook URL 생성
 
@@ -93,7 +93,7 @@
 4. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 Lambda를 검색하거나 **[Compute]** 밑에 있는 **[Lambda를]** 를 선택
 
 5. Lambda Dashboard에서  **[Create function]** 클릭후,
-  **Function name** = root_login_nofity_slack,
+  **Function name** = root_login_notify_slack,
   **Runtime** = Python 3.7,
   **[Create function]** 클릭
 
@@ -164,7 +164,7 @@
     }
     ```
 
-12. 오른쪽 Targets에서 **[:heavy_plus_sign: Add target]** &rightarrow; **Lambda function** &rightarrow; **Function** = root_login_nofity_slack &rightarrow; **[Configure details]**
+12. 오른쪽 Targets에서 **[:heavy_plus_sign: Add target]** &rightarrow; **Lambda function** &rightarrow; **Function** = root_login_notify_slack &rightarrow; **[Configure details]**
 
 13. **Name** = root_login_detected, **State** = :white_check_mark: Enabled &rightarrow; **[Create rule]**
 
