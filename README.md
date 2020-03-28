@@ -162,7 +162,7 @@
     }
     ```
 
-11. 오른쪽 Targets에서 **[:heavy_plus_sign: Add target]** &rightarrow; **Lambda function** &rightarrow; **Function** = root_login_nofity_slack &rightarrow; **[Configure details]** 
+11. 오른쪽 Targets에서 **[:heavy_plus_sign: Add target]** &rightarrow; **Lambda function** &rightarrow; **Function** = root_login_nofity_slack &rightarrow; **[Configure details]**
 
 12. **Name** = root_login_detected, **State** = :white_check_mark: Enabled &rightarrow; **[Create rule]**
 
