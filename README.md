@@ -59,6 +59,29 @@
    The Amazon Web Services Team
    ```
 
+6. AWS Trusted Advisor에서 Security 섹션의 **[Root 계정 MFA 활성화]** 항목을 통해서 주기적인 확인하시길 권장합니다.
+  ![Trusted Advisor](media/trustedadvisor.png)
+
+7. CloudTrail이 활성화되어 있다면 아래와 같은 CloudWatch Events Rule을 생성해서 Root 계정의 MFA가 비활성화 될 경우 알람을 받도록 설정할수도 있습니다.
+
+    ```json
+    {
+    "detail-type": [
+      "AWS API Call via CloudTrail"
+      ],
+      "detail": {
+        "userIdentity": {
+          "type": [
+            "Root"
+          ]
+        },
+        "eventName": [
+          "DeactivateMFADevice"
+        ]
+      }
+    }
+    ```
+
 ## Root 유저 로그인 Slack 알람 설정
 
 1. 접근 가능한 Slack Workspace 및 해당 Workspace에 대한 Admin 권한을 가지 계정이 필요.
@@ -146,3 +169,5 @@
 13. Root 계정으로 로그인 시도 후 테스트
 
     ![Slack](media/slack.png)
+
+14. **Target**를 AWS SNS 토픽으로 지정해서 이메일로 알림을 수신받도록 설정할수도 있습니다.
