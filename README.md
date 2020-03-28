@@ -88,14 +88,16 @@
 
 2. Slack workspace에 [Incoming webhook](https://my.slack.com/services/new/incoming-webhook) 설정 - 알람을 받은 채널을 지정하고 Webhook URL 생성
 
-3. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 Lambda를 검색하거나 **[Compute]** 밑에 있는 **[Lambda를]** 를 선택
+3. AWS Region을 **US East (N. Virginia)** us-east-1으로 변경
 
-4. Lambda Dashboard에서  **[Create function]** 클릭후,
+4. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 Lambda를 검색하거나 **[Compute]** 밑에 있는 **[Lambda를]** 를 선택
+
+5. Lambda Dashboard에서  **[Create function]** 클릭후,
   **Function name** = root_login_nofity_slack,
   **Runtime** = Python 3.7,
   **[Create function]** 클릭
 
-5. 아래 코드블록을 Lambda에 복사 후, <SLACK_CHANNEL>, <WEBHOOK_URL>을 위에서 생성한 값으로 변경후 **[Save]** 클릭
+6. 아래 코드블록을 Lambda에 복사 후, <SLACK_CHANNEL>, <WEBHOOK_URL>을 위에서 생성한 값으로 변경후 **[Save]** 클릭
 
     ```python
     import boto3
@@ -137,15 +139,15 @@
             logger.error("Server connection failed: %s", e.reason)
     ```
 
-6. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 CloudTrail를 검색하거나 **[Management & Governance]** 바로 밑에 있는 **[CloudTrail]** 를 선택
+7. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 CloudTrail를 검색하거나 **[Management & Governance]** 바로 밑에 있는 **[CloudTrail]** 를 선택
 
-7. **[Create trail]** &rightarrow; **Trail name** = trail-root-login, **S3 bucket** = <YOUR_INITIAL>-root-test &rightarrow; **[Create]**
+8. **[Create trail]** &rightarrow; **Trail name** = trail-root-login, **S3 bucket** = <YOUR_INITIAL>-root-test &rightarrow; **[Create]**
 
-8. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 CloudWatch를 검색하거나 **[Management & Governance]** 밑에 있는 **[CloudWatch]** 를 선택
+9. AWS Management Console에서 좌측 상단에 있는 **[Services]** 를 선택하고 검색창에서 CloudWatch를 검색하거나 **[Management & Governance]** 밑에 있는 **[CloudWatch]** 를 선택
 
-9. CloudWatch Dashboard에서 **[Events]** 섹션 아래에 있는 **[Rules]** &rightarrow; **[Create rule]**
+10. CloudWatch Dashboard에서 **[Events]** 섹션 아래에 있는 **[Rules]** &rightarrow; **[Create rule]**
 
-10. 왼쪽 Event Source에서 :white_check_mark: Event Pattern 선택하고 바로 아래 Dropdown 리스트를 클릭 후 **Custom event pattern** 선택 &rightarrow; 아래 JSON 블록 붙여넣기
+11. 왼쪽 Event Source에서 :white_check_mark: Event Pattern 선택하고 바로 아래 Dropdown 리스트를 클릭 후 **Custom event pattern** 선택 &rightarrow; 아래 JSON 블록 붙여넣기
 
     ```json
     {
@@ -162,12 +164,12 @@
     }
     ```
 
-11. 오른쪽 Targets에서 **[:heavy_plus_sign: Add target]** &rightarrow; **Lambda function** &rightarrow; **Function** = root_login_nofity_slack &rightarrow; **[Configure details]**
+12. 오른쪽 Targets에서 **[:heavy_plus_sign: Add target]** &rightarrow; **Lambda function** &rightarrow; **Function** = root_login_nofity_slack &rightarrow; **[Configure details]**
 
-12. **Name** = root_login_detected, **State** = :white_check_mark: Enabled &rightarrow; **[Create rule]**
+13. **Name** = root_login_detected, **State** = :white_check_mark: Enabled &rightarrow; **[Create rule]**
 
-13. Root 계정으로 로그인 시도 후 테스트
+14. Root 계정으로 로그인 시도 후 테스트
 
     ![Slack](media/slack.png)
 
-14. **Target**를 AWS SNS 토픽으로 지정해서 이메일로 알림을 수신받도록 설정할수도 있습니다.
+15. **Target**를 AWS SNS 토픽으로 지정해서 이메일로 알림을 수신받도록 설정할수도 있습니다.
